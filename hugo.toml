@@ -1,0 +1,14 @@
+baseURL = "https://KgK-16.github.io/wsf-world/"
+languageCode = "en"
+title = "World of Second Fire"
+theme = "hugo-geekdoc"
+
+[params]
+  description = "World Wiki, Work in Progress"
+  geekdocNav = true
+  geekdocSearch = true
+  geekdocSearchPrune = true
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
