@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>World of Second Fire</title>
+<title>Emberfront</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -12,23 +12,19 @@
   font-family: 'Airborne';
   src: url('{{ .Site.BaseURL }}fonts/airborne.woff2') format('woff2'),
        url('{{ .Site.BaseURL }}fonts/airborne.ttf') format('truetype');
-  font-weight: normal;
 }
 
 :root {
   --accent: #34336b;
-  --accent-bright: #5554a8;
+  --accent-bright: #6665c0;
   --accent-dim: #1e1d3f;
-  --amber: #250bb8;
-  --amber-bright: #746acf;
-  --amber-dim: #2c2f58;
   --white: #e8e8e0;
-  --gray: #666660;
+  --gray: #888880;
   --dark: #04040a;
   --darker: #020206;
-  --border: rgba(52, 51, 107, 0.4);
-  --border-amber: rgba(49, 11, 184, 0.35);
+  --border: rgba(102, 101, 192, 0.25);
   --mono: 'Share Tech Mono', monospace;
+  font-size: 133%;
 }
 
 body {
@@ -46,7 +42,7 @@ nav {
   top: 0;
   width: 100%;
   z-index: 100;
-  height: 44px;
+  height: 3.2rem;
   display: flex;
   align-items: stretch;
   background: var(--darker);
@@ -56,48 +52,48 @@ nav {
 .nav-logo-block {
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 1.2rem;
   border-right: 1px solid var(--border);
-  gap: 10px;
-  min-width: 160px;
+  min-width: 14rem;
+  flex-shrink: 0;
 }
 
 .nav-logo {
-  font-family: 'Airborne', 'Rajdhani', sans-serif;
-  font-size: 14px;
-  letter-spacing: 3px;
-  color: var(--white);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 300;
+  font-size: 0.52rem;
+  letter-spacing: 0.08rem;
+  color: rgba(232,232,224,0.45);
   text-decoration: none;
   text-transform: uppercase;
-}
-
-.nav-logo-sub {
-  font-family: var(--mono);
-  font-size: 7px;
-  color: var(--accent-bright);
-  letter-spacing: 1px;
+  line-height: 1.3;
 }
 
 .nav-links {
   display: flex;
   align-items: stretch;
   flex: 1;
+  justify-content: center;
 }
 
 .nav-links a {
   font-family: 'Rajdhani', sans-serif;
-  font-weight: 300;
-  font-size: 9px;
-  letter-spacing: 3px;
+  font-weight: 400;
+  font-size: 0.62rem;
+  letter-spacing: 0.18rem;
   text-transform: uppercase;
-  color: var(--gray);
+  color: rgba(232,232,224,0.75);
   text-decoration: none;
-  padding: 0 18px;
+  padding: 0 2.4rem;
   display: flex;
   align-items: center;
   border-right: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  margin-left: -1px;
   transition: all 0.2s;
   position: relative;
+  min-width: 9rem;
+  justify-content: center;
 }
 
 .nav-links a::after {
@@ -112,40 +108,19 @@ nav {
   transition: transform 0.2s;
 }
 
-.nav-links a:hover { color: var(--white); background: rgba(52,51,107,0.12); }
+.nav-links a:hover {
+  color: var(--white);
+  background: rgba(52,51,107,0.15);
+}
+
 .nav-links a:hover::after { transform: scaleX(1); }
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  border-left: 1px solid var(--border);
-  margin-left: auto;
-  gap: 16px;
-}
-
-.nav-time {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--accent-bright);
-  letter-spacing: 2px;
-}
-
-.nav-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--accent-bright);
-  animation: blink 2s infinite;
-}
-
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
 
 /* ── LAYOUT ── */
 .layout {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 31rem 1fr;
   height: 100vh;
-  padding-top: 44px;
+  padding-top: 3.2rem;
 }
 
 /* ── LEFT PANEL ── */
@@ -162,27 +137,28 @@ nav {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(52,51,107,0.06) 0%, transparent 40%),
-    repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(52,51,107,0.04) 28px, rgba(52,51,107,0.04) 29px);
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2.1rem,
+    rgba(102,101,192,0.04) 2.1rem, rgba(102,101,192,0.04) calc(2.1rem + 1px)
+  );
   pointer-events: none;
 }
 
 .left-top-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
+  padding: 0.5rem 1.5rem;
   border-bottom: 1px solid var(--border);
   background: rgba(2,2,6,0.8);
 }
 
 .left-top-bar-txt {
   font-family: var(--mono);
-  font-size: 7px;
+  font-size: 0.42rem;
   color: var(--accent-bright);
-  letter-spacing: 2px;
-  opacity: 0.7;
+  letter-spacing: 0.12rem;
+  opacity: 0.55;
+  text-transform: uppercase;
 }
 
 .left-content {
@@ -190,56 +166,64 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 40px 36px;
+  padding: 2.4rem 2.6rem;
   position: relative;
-}.hero-tag {
+}
+
+.hero-tag {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 300;
-  font-size: 9px;
-  letter-spacing: 4px;
+  font-size: 0.52rem;
+  letter-spacing: 0.28rem;
   text-transform: uppercase;
   color: var(--accent-bright);
-  margin-bottom: 24px;
+  margin-bottom: 1.4rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.6rem;
+  opacity: 0.8;
 }
 
 .hero-tag::before {
   content: '';
-  width: 20px;
+  width: 1.2rem;
   height: 1px;
   background: var(--accent-bright);
 }
-
-.hero-title {
+[4/6/2026 15:07] KgK-16: .hero-title {
   font-family: 'Airborne', 'Rajdhani', sans-serif;
-  font-size: clamp(36px, 4.5vw, 58px);
+  font-size: clamp(2.2rem, 3.8vw, 3.6rem);
   color: var(--white);
-  letter-spacing: 4px;
+  letter-spacing: 0.2rem;
   text-transform: uppercase;
   line-height: 1.05;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
-.hero-title-accent {
-  color: var(--accent-bright);
-}
+.hero-title-accent { color: var(--accent-bright); }
 
 .hero-year {
   font-family: 'Airborne', 'Rajdhani', sans-serif;
-  font-size: 13px;
-  color: rgba(255,255,255,0.12);
-  letter-spacing: 10px;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.1);
+  letter-spacing: 0.65rem;
   text-transform: uppercase;
-  margin-bottom: 28px;
+  margin-bottom: 1.6rem;
 }
 
 .left-divider {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 0.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.left-divider-sq {
+  width: 0.25rem;
+  height: 0.25rem;
+  border: 1px solid var(--accent-bright);
+  transform: rotate(45deg);
+  flex-shrink: 0;
 }
 
 .left-divider-line {
@@ -248,68 +232,18 @@ nav {
   background: var(--border);
 }
 
-.left-divider-sq {
-  width: 4px;
-  height: 4px;
-  border: 1px solid var(--accent-bright);
-  transform: rotate(45deg);
-}
-
 .hero-desc {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  font-size: 12px;
+  font-size: 0.7rem;
   line-height: 1.9;
-  color: rgba(232,232,224,0.45);
-  letter-spacing: 0.3px;
-  margin-bottom: 36px;
+  color: rgba(232,232,224,0.4);
+  letter-spacing: 0.02rem;
   font-style: italic;
-  max-width: 320px;
+  max-width: 22rem;
 }
 
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 28px;
-  border: 1px solid var(--accent);
-  color: var(--white);
-  text-decoration: none;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 300;
-  font-size: 9px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  transition: all 0.25s;
-  background: rgba(52,51,107,0.12);
-  align-self: flex-start;
-}
-
-.hero-cta:hover {
-  background: var(--accent);
-  border-color: var(--accent-bright);
-}
-
-.hero-cta-arrow {
-  width: 14px;
-  height: 1px;
-  background: currentColor;
-  position: relative;
-}
-
-.hero-cta-arrow::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: -3px;
-  width: 6px;
-  height: 6px;
-  border-right: 1px solid currentColor;
-  border-top: 1px solid currentColor;
-  transform: rotate(45deg);
-}
-
-/* ── RIGHT PANEL (photo) ── */
+/* ── RIGHT PANEL ── */
 .right-panel {
   position: relative;
   overflow: hidden;
@@ -325,7 +259,7 @@ nav {
 }
 
 @keyframes kenburns {
-  0% { transform: scale(1.04) translate(0,0); }
+  0%   { transform: scale(1.04) translate(0,0); }
   100% { transform: scale(1.1) translate(-1.5%,-1%); }
 }
 
@@ -333,232 +267,115 @@ nav {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, rgba(2,2,6,0.95) 0%, rgba(2,2,6,0.2) 40%, transparent 100%),
-    linear-gradient(to top, rgba(2,2,6,0.6) 0%, transparent 50%);
+    linear-gradient(to right, rgba(2,2,6,0.96) 0%, rgba(2,2,6,0.15) 45%, transparent 100%),
+    linear-gradient(to top, rgba(2,2,6,0.55) 0%, transparent 45%);
 }
 
-/* tac grid on right */
 .right-grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(52,51,107,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(52,51,107,0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(102,101,192,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(102,101,192,0.1) 1px, transparent 1px);
+  background-size: 3rem 3rem;
 }
 
 /* corner marks */
 .mark {
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 }
-.mark-tr { top: 16px; right: 16px; border-top: 1px solid rgba(52,51,107,0.6); border-right: 1px solid rgba(52,51,107,0.6); }
-.mark-br { bottom: 80px; right: 16px; border-bottom: 1px solid rgba(52,51,107,0.6); border-right: 1px solid rgba(52,51,107,0.6); }
+.mark-tr { top: 1rem; right: 1rem; border-top: 1px solid rgba(102,101,192,0.4); border-right: 1px solid rgba(102,101,192,0.4); }
+.mark-br { bottom: 5rem; right: 1rem; border-bottom: 1px solid rgba(102,101,192,0.4); border-right: 1px solid rgba(102,101,192,0.4); }
 
-/* ── BOTTOM RIGHT TAC PANEL ── */
-.tac-panel {
+/* ── COORDS STRIP bottom right ── */
+.coords-strip {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 360px;
-  background: rgba(2, 2, 6, 0.88);
-  border-top: 1px solid var(--border-amber);
-  border-left: 1px solid var(--border-amber);
-}
-
-.tac-header {
+  left: 0;
+  padding: 0.55rem 1.2rem;
+  background: rgba(2,2,6,0.75);
+  border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 12px;
-  border-bottom: 1px solid var(--border-amber);
-  background: rgba(107, 79, 8, 0.12);
+  backdrop-filter: blur(6px);
 }
 
-.tac-header-left {
+.coords-item {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
-.tac-header-sq {
-  width: 6px;
-  height: 6px;
-  background: var(--amber-bright);
-}.tac-header-txt {
+.coords-label {
   font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 2px;
-  color: var(--amber-bright);
+  font-size: 0.38rem;
+  letter-spacing: 0.15rem;
+  color: rgba(102,101,192,0.5);
   text-transform: uppercase;
 }
 
-.tac-header-right {
+.coords-val {
   font-family: var(--mono);
-  font-size: 7px;
-  color: var(--amber-dim);
-  letter-spacing: 1px;
+  font-size: 0.58rem;
+  color: var(--accent-bright);
+  letter-spacing: 0.08rem;
 }
 
-.tac-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-
-.tac-block {
-  padding: 8px 12px;
-  border-right: 1px solid rgba(107,79,8,0.2);
-  border-bottom: 1px solid rgba(107,79,8,0.2);
-}
-
-.tac-block:nth-child(2n) { border-right: none; }
-.tac-block:nth-last-child(-n+2) { border-bottom: none; }
-
-.tac-block-label {
-  font-family: var(--mono);
-  font-size: 7px;
-  letter-spacing: 2px;
-  color: var(--amber-dim);
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.tac-block-val {
-  font-family: var(--mono);
-  font-size: 16px;
-  color: var(--amber-bright);
-  letter-spacing: 2px;
-  line-height: 1;
-}
-
-.tac-block-unit {
-  font-family: var(--mono);
-  font-size: 7px;
-  color: var(--amber-dim);
-  letter-spacing: 1px;
-  margin-top: 2px;
-}
-
-/* gauge inside tac */
-.tac-gauge {
-  height: 3px;
-  background: rgba(107,79,8,0.25);
-  margin-top: 5px;
-  position: relative;
-}
-
-.tac-gauge-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background: var(--amber-bright);
-}
-
-.tac-wide {
-  grid-column: 1 / -1;
-  border-right: none;
-}
-
-.tac-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 12px;
-  border-bottom: 1px solid rgba(107,79,8,0.2);
-}
-
-.tac-row:last-child { border-bottom: none; }
-
-.tac-row-label {
-  font-family: var(--mono);
-  font-size: 7px;
-  color: var(--amber-dim);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.tac-row-val {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--amber-bright);
-  letter-spacing: 2px;
-}
-
-.tac-row-bar {
-  flex: 1;
-  margin: 0 10px;
-  height: 2px;
-  background: rgba(107,79,8,0.2);
-  position: relative;
-}
-
-.tac-row-bar-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background: var(--amber-bright);
+.coords-sep {
+  width: 1px;
+  height: 1.6rem;
+  background: var(--border);
 }
 
 /* ── MOBILE ── */
 @media (max-width: 900px) {
+  :root { font-size: 100%; }
   body { overflow-y: auto; }
   .layout { grid-template-columns: 1fr; height: auto; }
-  .right-panel { height: 260px; }
-  .tac-panel { position: static; width: 100%; border-left: none; }
-  nav { flex-wrap: wrap; height: auto; }
+  .right-panel { height: 55vw; }
+  nav { height: auto; flex-wrap: wrap; }
+  .nav-links { justify-content: flex-start; }
+  .nav-links a { min-width: unset; padding: 0 1rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo-block">
-    <div>
-      <div class="nav-logo">WSF</div>
-      <div class="nav-logo-sub">ARCHIVE SYS</div>
-    </div>
+    <div class="nav-logo">Powered by<br>Redfront Strategic Sciences</div>
   </div>
   <div class="nav-links">
-    <a href="{{ .Site.BaseURL }}docs/factions/">Factions</a>
-    <a href="{{ .Site.BaseURL }}docs/ships/">Ships</a>
-    <a href="{{ .Site.BaseURL }}docs/antrite/">Antrite</a>
-    <a href="{{ .Site.BaseURL }}docs/crew/">Crew</a>
-    <a href="{{ .Site.BaseURL }}docs/timeline/">Timeline</a>
-  </div>
-  <div class="nav-right">
-    <span class="nav-time" id="nav-time">00:00:00</span>
-    <div class="nav-dot"></div>
+    <a href="{{ .Site.BaseURL }}docs/about/">About Project</a>
+    <a href="{{ .Site.BaseURL }}docs/">Archive</a>
+    <a href="{{ .Site.BaseURL }}docs/map/">World Map</a>
   </div>
 </nav>
 
-<!-- LAYOUT -->
 <div class="layout">
 
   <!-- LEFT -->
   <div class="left-panel">
     <div class="left-top-bar">
-      <span class="left-top-bar-txt">KGK SPEAR-75 · INDEPENDENT FRIGATE</span>
-      <span class="left-top-bar-txt" id="left-coord">N 42°41' E 18°18'</span>
+[4/6/2026 15:07] KgK-16: <span class="left-top-bar-txt">Emberfront · World Archive · Year 420</span>
     </div>
     <div class="left-content">
-      <div class="hero-title">World of Second Fire</div>
-      <div class="hero-year">Work in Progress</div>
+      <div class="hero-tag">Year 420 · Second Continental War</div>
+      <div class="hero-title">Ember<br><span class="hero-title-accent">front</span></div>
+      <div class="hero-year">Year 420</div>
       <div class="left-divider">
         <div class="left-divider-sq"></div>
         <div class="left-divider-line"></div>
       </div>
-      <p class="hero-desc">Handmaded world, based on world war two and cold war.</p>
-      <a href="{{ .Site.BaseURL }}docs/" class="hero-cta">
-        Enter the World
-        <div class="hero-cta-arrow"></div>
-      </a>
+      <p class="hero-desc">Ten years of grinding conflict have consumed every continent. The crew of Spear-75 has decided to end the war themselves.</p>
     </div>
-  </div><!-- RIGHT -->
+  </div>
+
+  <!-- RIGHT -->
   <div class="right-panel">
     <div class="right-bg"></div>
     <div class="right-overlay"></div>
@@ -566,92 +383,30 @@ nav {
     <div class="mark mark-tr"></div>
     <div class="mark mark-br"></div>
 
-    <!-- TAC PANEL bottom right -->
-    <div class="tac-panel">
-
-      <div class="tac-header">
-        <div class="tac-header-left">
-          <div class="tac-header-sq"></div>
-          <span class="tac-header-txt">KGK Spear-75 · Status</span>
-        </div>
-        <span class="tac-header-right" id="tac-time">——</span>
+    <div class="coords-strip">
+      <div class="coords-item">
+        <span class="coords-label">Latitude</span>
+        <span class="coords-val">——</span>
       </div>
-
-      <div class="tac-body">
-
-        <div class="tac-block">
-          <div class="tac-block-label">Altitude</div>
-          <div class="tac-block-val" id="alt-val">280</div>
-          <div class="tac-block-unit">M ASL</div>
-          <div class="tac-gauge"><div class="tac-gauge-fill" style="width:28%"></div></div>
-        </div>
-
-        <div class="tac-block">
-          <div class="tac-block-label">Airspeed</div>
-          <div class="tac-block-val" id="spd-val">087</div>
-          <div class="tac-block-unit">KM/H</div>
-          <div class="tac-gauge"><div class="tac-gauge-fill" id="spd-bar" style="width:43%"></div></div>
-        </div>
-
-        <div class="tac-block">
-          <div class="tac-block-label">Heading</div>
-          <div class="tac-block-val" id="hdg-val">247°</div>
-          <div class="tac-block-unit">MAGNETIC</div>
-        </div>
-
-        <div class="tac-block">
-          <div class="tac-block-label">Ext Temp</div>
-          <div class="tac-block-val" id="tmp-val">-4°</div>
-          <div class="tac-block-unit">CELSIUS</div>
-        </div>
-
+      <div class="coords-sep"></div>
+      <div class="coords-item">
+        <span class="coords-label">Longitude</span>
+        <span class="coords-val">——</span>
       </div>
-
+      <div class="coords-sep"></div>
+      <div class="coords-item">
+        <span class="coords-label">Location</span>
+        <span class="coords-val">——</span>
+      </div>
+      <div class="coords-sep"></div>
+      <div class="coords-item">
+        <span class="coords-label">Photo credit</span>
+        <span class="coords-val">——</span>
+      </div>
     </div>
   </div>
 
 </div>
-
-<script>
-  function pad(n,l){ return String(n).padStart(l,'0'); }
-
-  function tick() {
-    const now = new Date();
-    const t = pad(now.getHours(),2)+':'+pad(now.getMinutes(),2)+':'+pad(now.getSeconds(),2);
-    document.getElementById('nav-time').textContent = t+' UTC';
-    document.getElementById('tac-time').textContent = t;
-  }
-  setInterval(tick,1000); tick();
-
-  let lat=42.69, lon=18.31;
-
-  function drift() {
-    alt += (Math.random()-.5)*1.5;
-    alt = Math.max(265,Math.min(295,alt));
-    document.getElementById('alt-val').textContent = Math.round(alt);
-
-    spd += (Math.random()-.5)*1.5;
-    spd = Math.max(80,Math.min(95,spd));
-    document.getElementById('spd-val').textContent = pad(Math.round(spd),3);
-
-    hdg += (Math.random()-.5)*0.4;
-    hdg = Math.max(244,Math.min(250,hdg));
-    document.getElementById('hdg-val').textContent = Math.round(hdg)+'°';
-
-    tmp += (Math.random()-.5)*0.3;
-    tmp = Math.max(-16,Math.min(-12,tmp));
-    document.getElementById('tmp-val').textContent = Math.round(tmp)+'°';
-
-    lat += (Math.random()-.5)*0.0008;
-    lon += (Math.random()-.5)*0.0008;
-    const lD=Math.floor(lat), lM=Math.floor((lat-lD)*60);
-    const oD=Math.floor(lon), oM=Math.floor((lon-oD)*60);
-    document.getElementById('left-coord').textContent =
-      'N '+lD+'°'+pad(lM,2)+'\' E '+oD+'°'+pad(oM,2)+'\'';
-  }
-
-  setInterval(drift, 900);
-</script>
 
 </body>
 </html>

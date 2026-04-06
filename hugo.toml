@@ -1,6 +1,6 @@
 baseURL = "https://KgK-16.github.io/ASCW/"
 languageCode = "en"
-title = "Archive of Second Continental War"
+title = "ASCW"
 theme = "hugo-geekdoc"
 
 [params]
