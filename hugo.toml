@@ -4,7 +4,7 @@ title = "ASCW"
 theme = "hugo-geekdoc"
 
 [params]
-  description = "WIP"
+  description = "Work In Progress"
   geekdocNav = true
   geekdocSearch = true
   geekdocSearchPrune = true
